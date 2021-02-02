@@ -13,6 +13,6 @@ const pool = new Pool({
 });
 
 app.get("/",(req,res)=>{
-    pool.query("SELECT * FROM PERSONS").then(data=>res.json(data))
+    pool.query("SELECT * FROM PERSONS").then(data=>res.json({data:data.rows}))
 })
 app.listen(port,()=>{console.log("server running")});
