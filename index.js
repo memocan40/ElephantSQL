@@ -4,15 +4,11 @@ const app     = express();
 const port      =3000;
 
 
-const pool = new Pool({
-    user:"imytfntr",
-    host:"ziggy.db.elephantsql.com",
-    database:"imytfntr",
-    password:"DtDzEob3mc_VnyG4392I7nmIkH5RlSu2",
-    port:"5432",
-});
+const dotenv=require('dotenv');
+dotenv.config();
 
-app.get("/",(req,res)=>{
-    pool.query("SELECT * FROM PERSONS").then(data=>res.json({data:data.rows}))
-})
+const alldata=require("./routes/alldata")
+
+
+app.use("/",alldata);
 app.listen(port,()=>{console.log("server running")});
